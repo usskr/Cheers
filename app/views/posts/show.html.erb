@@ -1,0 +1,18 @@
+<div class="container px-5 my-5 px-sm-0">
+  <div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
+      <%= link_to "New", new_post_path, class: "btn btn-primary" %>
+      <div>
+        <%= attachment_image_tag @post.user, :profile_image, size:"60x60", fallback: "cheer.png" %>
+        <%= @post.user.name %>
+        <%= @post.content %><br>
+        <%= attachment_image_tag @post, :image, size:"500x500" %>
+        <%= l @post.created_at %>
+        <% if @post.user == current_user %>
+          <%= link_to "Destroy", post_path(@post), method: :delete %>
+        <% end %>
+        <%= link_to "Back", posts_path %>
+      </div>
+    </div>
+  </div>
+</div>
