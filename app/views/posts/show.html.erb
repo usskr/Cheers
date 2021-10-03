@@ -7,7 +7,14 @@
         <%= @post.user.name %>
         <%= @post.content %><br>
         <%= attachment_image_tag @post, :image, size:"500x500" %><br>
-        <%= l @post.created_at %><br>
+        <%= l @post.created_at %>
+    	  <% if @post.cheered_by?(current_user) %>
+          <%= link_to @post.cheers.count, post_cheers_path(@post), method: :delete, local: true, class: "fas fa-flag" %>
+        <% else %>
+          <%= link_to @post.cheers.count, post_cheers_path(@post), method: :post, local: true, class: "far fa-flag" %>
+        <% end %>
+        <%= @post.post_comments.count %>コメント
+        <br>
         <% if @post.user == current_user %>
           <%= link_to "Destroy", post_path(@post), method: :delete %>
         <% end %>
