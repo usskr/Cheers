@@ -7,8 +7,9 @@
           <%= attachment_image_tag post.user, :profile_image, size:"60x60", fallback: "cheer.png" %>
           <%= post.user.name %>
           <%= post.content %>
-          <%= attachment_image_tag post, :image, size:"150x150" %>
+          <%= attachment_image_tag post, :image, size:"150x150" %><br>
           <%= l post.created_at, format: :short %>
+          <%= post.post_comments.count %>コメント
           <%= link_to "Show", post_path(post) %>
         </div>
       <% end %>
