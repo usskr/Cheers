@@ -11,7 +11,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    if params[:category]
+      @posts = Post.where(category: params[:category])
+    else
+      @posts = Post.all
+    end
   end
 
   def show
@@ -28,6 +32,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :image)
+    params.require(:post).permit(:content, :image, :category)
   end
 end
