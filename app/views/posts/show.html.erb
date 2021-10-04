@@ -18,6 +18,12 @@
         <br>
         <% if @post.user == current_user %>
           <%= link_to "Destroy", post_path(@post), method: :delete %>
+        <% else %>
+          <% if current_user.following?(@post.user) %>
+            <%= link_to "フォロー外す", user_relationships_path(@post.user), method: :delete, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(@post.user), method: :post, class: "btn btn-success" %>
+          <% end %>
         <% end %>
       </div>
     </div>

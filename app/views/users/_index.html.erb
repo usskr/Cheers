@@ -1,0 +1,22 @@
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+    <tr>
+      <td>
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag(user, :profile_image, size:'40x40', fallback: "cheer.png") %>
+        <% end %>
+      </td>
+      <td><%= user.name %></td>
+      <td><%= link_to "Show", user_path(user) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
