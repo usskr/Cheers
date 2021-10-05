@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chats/show'
   devise_for :users
   root to: 'homes#top'
   get "/about" => "homes#about"
@@ -11,4 +12,5 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
     resource :cheers, only: [:create, :destroy]
   end
+  resources :chats, only: [:show, :create]
 end
