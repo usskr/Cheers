@@ -36,6 +36,12 @@
       <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
         <%= link_to "#{@user.name}さんとのチャット", chat_path(@user), class: "btn btn-info" %></td>
       <% end %>
+      <br><br><br>
+      <h4>最近の投稿</h4>
+      <div style="width:600px;height:300px;overflow:auto;border:solid;">
+        <%= render "posts/index", posts: @user.posts %>
+      </div>
     </div>
   </div>
+
 </div>
