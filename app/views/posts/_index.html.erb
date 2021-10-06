@@ -1,17 +1,13 @@
 <% posts.each do |post| %>
-  <div class="mb-5">
+  <div id="post_<%= post.id %>", class="mb-5">
     <%= attachment_image_tag post.user, :profile_image, size:"60x60", fallback: "cheer.png" %>
     <%= post.user.name %>
     <%= post.content %>
     <%= attachment_image_tag post, :image, size:"150x150" %><br>
     <%= l post.created_at, format: :short %><br>
     <%= render "posts/category", post: post %>
-    <% if post.cheered_by?(current_user) %>
-      <%= link_to post.cheers.count, post_cheers_path(post), method: :delete, local: true, class: "fas fa-flag" %>
-    <% else %>
-      <%= link_to post.cheers.count, post_cheers_path(post), method: :post, local: true, class: "far fa-flag" %>
-    <% end %>
-    <%= post.post_comments.count %>コメント
+    <span class="cheer_btn"><%= render "cheers/cheer_btn", post: post %></span>
+    <span class="comments_count"><%= post.post_comments.count %>コメント</span>
     <%= link_to "Show", post_path(post) %>
   </div>
 <% end %>
