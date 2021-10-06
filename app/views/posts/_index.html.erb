@@ -5,7 +5,7 @@
     <%= post.content %>
     <%= attachment_image_tag post, :image, size:"150x150" %><br>
     <%= l post.created_at, format: :short %><br>
-    <%= post.category %>
+    <%= render "posts/category", post: post %>
     <% if post.cheered_by?(current_user) %>
       <%= link_to post.cheers.count, post_cheers_path(post), method: :delete, local: true, class: "fas fa-flag" %>
     <% else %>

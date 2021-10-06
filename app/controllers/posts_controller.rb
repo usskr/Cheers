@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.start_time = Date.current
     @post.save
     redirect_to posts_path
   end
@@ -32,6 +33,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :image, :category)
+    params.require(:post).permit(:content, :image, :category, :start_time)
   end
 end

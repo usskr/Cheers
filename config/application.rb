@@ -12,6 +12,7 @@ module Cheers
     config.load_defaults 5.2
     config.time_zone = 'Asia/Tokyo'
     config.i18n.default_locale = :ja
+    config.beginning_of_week = :sunday
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
