@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :posts do
     resources :post_comments, only: [:create, :destroy]
     resource :cheers, only: [:create, :destroy]
+    collection do
+      get :rank
+    end
   end
   resources :chats, only: [:show, :create]
 end

@@ -16,6 +16,10 @@
           <td><%= @user.introduction %></td>
         </tr>
         <tr>
+          <th>投稿数</th>
+          <td><%= @user.posts.count %></td>
+        </tr>
+        <tr>
           <th>フォロー数</th>
           <td><%= link_to @user.followings.count, user_followings_path(@user) %></td>
         </tr>

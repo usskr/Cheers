@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :cheers, dependent: :destroy
+  has_many :cheered_users, through: :cheers, source: :user
 
   def cheered_by?(user)
     cheers.where(user_id: user.id).exists?
