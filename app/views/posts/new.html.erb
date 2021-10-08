@@ -16,8 +16,8 @@
         </div>
         <div class="form-group">
           <%= f.fields_for :spot do |s| %>
-            <%= s.label :address, "レビュー場所(Google Mapで検索)", class: 'spot__title' %>
-            <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text' %>
+            <%= s.label :address, "場所(Google Mapで検索)", class: 'spot__title' %>
+            <%= s.text_field :address, placeholder: "スポットを入力(例：〇〇公園、△△ジム)", id: "address", class: 'spot__text' %>
             <input type="button" value="検索" onclick="codeAddress()">
           <% end %>
           <div id="map", style="height: 320px; width: 640px;"></div>

@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     # end
   end
   resources :chats, only: [:show, :create]
+  resources :spots, only: [:index, :show]
 end
