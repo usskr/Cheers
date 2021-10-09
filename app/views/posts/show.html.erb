@@ -6,8 +6,8 @@
         <%= @post.user.name %>
         <%= @post.content %><br>
         <%= attachment_image_tag @post, :image, size:"500x500" %><br>
-        <% if @post.spot.address.present? %>
-          <%= link_to "＠#{@post.spot.address}", spot_path(@post.spot) %>
+        <% if @spot %>
+          <%= link_to "＠#{@spot.address}", spot_path(@spot) %>
           <div id="show_map", style="height: 320px; width: 400px;"></div>
         <% end %>
         <%= l @post.created_at %>

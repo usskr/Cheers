@@ -4,6 +4,9 @@
       <h3><%= @spot.address %>の詳細情報</h3>
       <div id="show_map", style="height: 320px; width: 400px;"></div>
       <h5>レビュー</h5>
+      <% @reviews.each do |review| %>
+        <%= review.body %>
+      <% end %>
     </div>
   </div>
 </div>

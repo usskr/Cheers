@@ -8,11 +8,13 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.start_time = Date.current
-    if @post.save
-      redirect_to post_path(@post)
-    else
-      redirect_to new_post_path
+    if spot_params[:address]
+      @spot = Spot.find_or_create_by(address: spot_params[:address])
+      @post.spot = @spot # @post.update(spot_id: @spot.id)と同じ
+      # spot_idをpostに入れ込む
     end
+    @post.save
+    redirect_to post_path(@post)
   end
 
   def index
@@ -26,10 +28,13 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
-    @lat = @post.spot.latitude
-    @lng = @post.spot.longitude
-    gon.lat = @lat
-    gon.lng = @lng
+    @spot = @post.spot
+    if @spot
+      @lat = @spot.latitude
+      @lng = @spot.longitude
+      gon.lat = @lat
+      gon.lng = @lng
+    end
   end
 
   def destroy
@@ -56,6 +61,11 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :image, :category, :start_time, spot_attributes: [:address])
+    params.require(:post).permit(:content, :image, :category, :start_time)
   end
+
+  def spot_params
+    params.require(:post).permit(spot: :address)[:spot]
+  end
+
 end

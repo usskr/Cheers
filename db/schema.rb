@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_08_064015) do
+ActiveRecord::Schema.define(version: 2021_10_09_124035) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "room_id", null: false
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2021_10_08_064015) do
     t.datetime "updated_at", null: false
     t.integer "category"
     t.datetime "start_time", null: false
+    t.integer "spot_id"
+    t.index ["spot_id"], name: "index_posts_on_spot_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -50,6 +52,13 @@ ActiveRecord::Schema.define(version: 2021_10_08_064015) do
     t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "spot_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -63,7 +72,6 @@ ActiveRecord::Schema.define(version: 2021_10_08_064015) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "post_id"
   end
 
   create_table "user_rooms", force: :cascade do |t|
