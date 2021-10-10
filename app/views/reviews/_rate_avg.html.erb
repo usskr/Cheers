@@ -1,10 +1,11 @@
 <script>
-$('#star').raty({
-  size     : 36,
+$('#rate_<%= spot.id %>').raty({
+  size: 20,
   starOff:  '<%= asset_path('star-off.png') %>',
   starOn : '<%= asset_path('star-on.png') %>',
   starHalf: '<%= asset_path('star-half.png') %>',
-  scoreName: 'review[rate]',
   half: true,
+  readOnly: true,
+  score: <%= reviews.average(:rate).to_f.round(1) %>,
 });
 </script>

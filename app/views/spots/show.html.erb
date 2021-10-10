@@ -5,19 +5,8 @@
       <div id="show_map", style="height: 320px; width: 400px;"></div>
       <h5>レビュー(<%= @reviews.count %>件)</h5>
       <span id="rate_<%= @spot.id %>"></span>
-      <script>
-      $('#rate_<%= @spot.id %>').raty({
-        size: 20,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        half: true,
-        readOnly: true,
-        score: <%= @reviews.average(:rate).to_f.round(1) %>,
-      });
-      </script>
+      <%= render "reviews/rate_avg", spot: @spot, reviews: @reviews %>
       <span><%= @reviews.average(:rate).to_f.round(1) %></span>
-      
       <% @reviews.each do |review| %>
         <div>
           <%= attachment_image_tag review.user, :profile_image, size:"40x40", fallback: "cheer.png" %>
@@ -34,19 +23,8 @@
         <div class="form-group" id="star">
           <%= f.label :rate %>
           <%= f.hidden_field :rate, id: :review_star, class:'form-control' %>
+          <%= render "reviews/rate" %>
         </div>
-
-        <script>
-        $('#star').raty({
-          size     : 36,
-          starOff:  '<%= asset_path('star-off.png') %>',
-          starOn : '<%= asset_path('star-on.png') %>',
-          starHalf: '<%= asset_path('star-half.png') %>',
-          scoreName: 'review[rate]',
-          half: true,
-        });
-        </script>
-
         <div class="form-group">
           <%= f.submit "レビューを投稿", class: 'btn btn-success' %>
         </div>
