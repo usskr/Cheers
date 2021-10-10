@@ -3,9 +3,23 @@
     <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
       <h3><%= @spot.address %>の詳細情報</h3>
       <div id="show_map", style="height: 320px; width: 400px;"></div>
-      <h5>レビュー</h5>
+      <h5>レビュー(<%= @reviews.count %>件)</h5>
       <% @reviews.each do |review| %>
-        <%= review.body %>
+        <div>
+          <%= attachment_image_tag review.user, :profile_image, size:"40x40", fallback: "cheer.png" %>
+          <%= review.user.name %>
+          <%= review.body %>
+        </div>
+      <% end %>
+      <%= form_with model: @review, local:true do |f| %>
+        <div class="form-group">
+          <%= f.hidden_field :spot_id, value: @spot.id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.text_field :body, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "レビューを投稿", class: 'btn btn-success' %>
+        </div>
       <% end %>
     </div>
   </div>

@@ -8,10 +8,9 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.start_time = Date.current
-    if spot_params[:address].present?
-      @spot = Spot.find_or_create_by(address: spot_params[:address])
-      @post.spot = @spot # @post.update(spot_id: @spot.id)と同じ
-      # spot_idをpostに入れ込む
+    if spot_params[:address].present? # addressが入力されている場合
+      @spot = Spot.find_or_create_by(address: spot_params[:address]) # 同じaddressがすでにあればfind,なければcreateをする
+      @post.spot = @spot # @post.update(spot_id: @spot.id)と同じ。spot_idをpostに入れ込む
     end
     @post.save
     redirect_to post_path(@post)
@@ -67,5 +66,4 @@ class PostsController < ApplicationController
   def spot_params
     params.require(:post).permit(spot: [:address])[:spot] # postモデルのフォームでspotモデルを扱っているため
   end
-
 end
