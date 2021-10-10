@@ -5,7 +5,6 @@ class SpotsController < ApplicationController
   end
 
   def show
-    # @spots = Spot.where(address: params[:address])
     @spot = Spot.find(params[:id])
     @reviews = @spot.reviews
     @lat = @spot.latitude

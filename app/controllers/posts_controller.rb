@@ -65,7 +65,7 @@ class PostsController < ApplicationController
   end
 
   def spot_params
-    params.require(:post).permit(spot: :address)[:spot]
+    params.require(:post).permit(spot: [:address])[:spot] # postモデルのフォームでspotモデルを扱っているため
   end
 
 end

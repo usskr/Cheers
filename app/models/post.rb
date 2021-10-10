@@ -3,8 +3,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :cheers, dependent: :destroy
-  belongs_to :spot, optional: true
-  # accepts_nested_attributes_for :spot
+  belongs_to :spot, optional: true # spotを持たないpostを作成できる
   # has_many :cheered_users, through: :cheers, source: :user
 
   def cheered_by?(user)
