@@ -1,27 +1,27 @@
 <div class="container w-50 mt-5 text-center">
-  <h2 class="text-center">新規登録</h2>
+  <h2 class="text-center">アカウント作成</h2>
 
   <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="form-group mt-5 mb-4">
-      <%= f.text_field :name, autofocus: true, placeholder: "ユーザーネーム", class:"form-control" %>
+    <div class="form-group mt-5 mb-4 mx-auto" style="width:300px;">
+      <%= f.text_field :name, autofocus: true, placeholder: "ユーザ名", class:"form-control" %>
     </div>
 
-    <div class="form-group my-4">
+    <div class="form-group my-4 mx-auto" style="width:300px;">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class:"form-control" %>
     </div>
 
-    <div class="form-group my-4">
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(6文字以上)", class:"form-control" %>
+    <div class="form-group my-4 mx-auto" style="width:300px;">
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード（6文字以上）", class:"form-control" %>
     </div>
 
-    <div class="form-group my-4">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認用)", class:"form-control" %>
+    <div class="form-group my-4 mx-auto" style="width:300px;">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード（確認用）", class:"form-control" %>
     </div>
 
     <div class="form-group">
-      <%= f.submit "登録する", class:"btn btn-primary" %>
+      <%= f.submit "登録する", class:"btn btn-success" %>
     </div>
   <% end %>
 
