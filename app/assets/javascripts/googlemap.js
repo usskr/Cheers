@@ -1,5 +1,9 @@
 let map //変数の定義
 let geocoder //変数の定義
+let marker = []; // マーカーを複数表示させたいので、配列化
+let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
+let markerData = gon.spots; // コントローラーで定義したインスタンス変数を変数に代入
+let id = markerData[i]['id'] // 各スポットのIDを変数化
 
 function initMap(){ //コールバック関数
   geocoder = new google.maps.Geocoder() //GoogleMapsAPIジオコーディングサービスにアクセス
@@ -8,7 +12,8 @@ function initMap(){ //コールバック関数
       center: {lat: 35.6594666, lng: 139.7005536}, //最初に表示する場所（今回は「渋谷スクランブル交差点」が初期値）
       zoom: 15, //拡大率（1〜21まで設定可能）
     });
-  }else{ //'map'というidが無かった場合
+
+  }else if(document.getElementById('show_map')){ //'show_map'というidを取得できたら実行
     map = new google.maps.Map(document.getElementById('show_map'), { //'show_map'というidを取得してマップを表示
       center: {lat: gon.lat, lng: gon.lng}, //controllerで定義した変数を緯度・経度の値とする（値はDBに入っている）
       zoom: 15, //拡大率（1〜21まで設定可能）
@@ -18,8 +23,40 @@ function initMap(){ //コールバック関数
       position:  {lat: gon.lat, lng: gon.lng}, //マーカーを落とす位置を決める（値はDBに入っている）
       map: map //マーカーを落とすマップを指定
     });
+
+  }else{ //'map'、'show_map'というidが無かった場合
+    map = new google.maps.Map(document.getElementById('all_map'), { //'all_map'というidを取得してマップを表示
+      center: {lat: 35.6594666, lng: 139.7005536}, //最初に表示する場所（今回は「渋谷スクランブル交差点」が初期値）
+      zoom: 10, //拡大率（1〜21まで設定可能）
+    });
+
+      for (var i = 0; i < markerData.length; i++) { // 繰り返し処理でマーカーと吹き出しを複数表示させる
+        let id = markerData[i]['id']
+
+        markerLatLng = new google.maps.LatLng({ // 各地点の緯度経度を算出
+          lat: markerData[i]['latitude'],
+          lng: markerData[i]['longitude']
+        });
+
+        marker[i] = new google.maps.Marker({ // 各地点のマーカーを作成
+          position: markerLatLng,
+          map: map
+        });
+
+        infoWindow[i] = new google.maps.InfoWindow({ // infoWindowは吹き出し
+          content: `<a href='/spots/${ id }'>${ markerData[i]['address'] }</a>` // 吹き出しの中身をリンクにする
+        });
+
+        markerEvent(i); // マーカーにクリックイベントを追加
+      }
   }
 }
+
+function markerEvent(i) { // マーカーをクリックしたら吹き出しを表示
+    marker[i].addListener('click', function () {
+      infoWindow[i].open(map, marker[i]);
+    });
+  }
 
 function codeAddress(){ //コールバック関数
   let inputAddress = document.getElementById('address').value; //'address'というidの値（value）を取得
