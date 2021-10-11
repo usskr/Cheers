@@ -7,6 +7,7 @@
         <% @spots.each do |spot| %>
           <tr>
             <td><%= link_to spot.address, spot_path(spot) %></td>
+            <td>レビュー(<%= spot.reviews.count %>件)</td>
             <td>
               <span id="rate_<%= spot.id %>"></span>
               <%= render "reviews/rate_avg", spot: spot, reviews: spot.reviews %>
