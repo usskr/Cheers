@@ -8,7 +8,7 @@
     <%= l post.created_at, format: :short %><br>
     <%= render "posts/category", post: post %>
     <span class="cheer_btn"><%= render "cheers/cheer_btn", post: post %></span>
-    <span class="comments_count"><%= post.post_comments.count %>コメント</span>
+    <span class="comments_count"><%= render "post_comments/comment_btn", post: post %></span>
     <%= link_to "Show", post_path(post) %>
   </div>
 <% end %>

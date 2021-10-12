@@ -1,39 +1,50 @@
 <div class="container px-5 my-5 px-sm-0">
   <div class="row">
-    <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
+    <div class="col-sm-10 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
       <div id="post_<%= @post.id %>">
-        <%= attachment_image_tag @post.user, :profile_image, size:"60x60", fallback: "cheer.png" %>
-        <%= @post.user.name %>
-        <%= @post.content %><br>
-        <%= attachment_image_tag @post, :image, size:"500x500" %><br>
-        <% if @spot %>
-          <%= link_to "＠#{@spot.address}", spot_path(@spot) %>
-          <div id="show_map", style="height: 320px; width: 400px;"></div>
-        <% end %>
-        <%= l @post.created_at %>
-        <%= render "posts/category", post: @post %>
-    	  <span class="cheer_btn"><%= render "cheers/cheer_btn", post: @post %></span>
-        <span class="comments_count"><%= @post.post_comments.count %>コメント</span>
-        <br>
-        <% if @post.user == current_user %>
-          <%= link_to "Destroy", post_path(@post), method: :delete %>
-        <% else %>
-          <% if current_user.following?(@post.user) %>
-            <%= link_to "フォロー外す", user_relationships_path(@post.user), method: :delete, class: "btn btn-primary" %>
-          <% else %>
-            <%= link_to "フォローする", user_relationships_path(@post.user), method: :post, class: "btn btn-success" %>
-          <% end %>
-        <% end %>
+        <table>
+          <tr>
+            <td style="width: 20%">
+              <%= attachment_image_tag @post.user, :profile_image, size:"60x60", fallback: "cheer.png" %>
+              <%= @post.user.name %>
+            </td>
+            <td style="width: 80%">
+              <%= @post.content %>
+              <% if @spot %>
+                <%= link_to "＠#{@spot.address}", spot_path(@spot) %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+        <%= attachment_image_tag @post, :image, size:"600x500" %><br>
+        <div class="d-flex justify-content-around mt-2">
+          <div><%= render "posts/category", post: @post %></div>
+      	  <div class="cheer_btn"><%= render "cheers/cheer_btn", post: @post %></div>
+          <div class="comments_count"><%= render "post_comments/comment_btn", post: @post %></div>
+          <div>
+            <% if @post.user == current_user %>
+              <%= link_to post_path(@post), method: :delete do %>
+                <i class="fas fa-trash"></i>
+              <% end %>
+            <% else %>
+              <% if current_user.following?(@post.user) %>
+                <%= link_to "フォロー外す", user_relationships_path(@post.user), method: :delete, class: "btn btn-primary" %>
+              <% else %>
+                <%= link_to "フォローする", user_relationships_path(@post.user), method: :post, class: "btn btn-success" %>
+              <% end %>
+            <% end %>
+          </div>
+          <div><%= l @post.created_at %></div>
+        </div>
       </div>
-      <table class="table post_comments">
+      <table class="table post_comments mt-5">
         <%= render "post_comments/comment_index", post: @post %>
       </table>
-      <%= form_with model:[@post,@post_comment], remote: true do |f| %>
-        <%= f.text_area :comment, size:"50x2" %>
-        <%= f.submit '送信'%>
+      <%= form_with model:[@post,@post_comment], class: "text-center", remote: true do |f| %>
+        <%= f.text_area :comment, placeholder: "コメント", class: "form-control" %>
+        <%= f.submit '送信', class: "mt-2" %>
       <% end %>
-      <%= link_to "Back", posts_path %>
+      <%= link_to "一覧に戻る", posts_path %>
     </div>
   </div>
 </div>
-<%= javascript_include_tag "googlemap.js" %>
