@@ -2,14 +2,14 @@
   <div class="row">
     <div class="col-sm-10 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
       <div id="post_<%= @post.id %>">
-        <table>
+        <table class="table table-borderless">
           <tr>
             <td style="width: 20%">
-              <%= attachment_image_tag @post.user, :profile_image, size:"60x60", fallback: "cheer.png" %>
+              <%= attachment_image_tag @post.user, :profile_image, size:"60x60", fallback: "cheer.jpeg", style: "border-radius: 50%" %>
               <%= @post.user.name %>
             </td>
-            <td style="width: 80%">
-              <%= @post.content %>
+            <td style="width: 80%" class="align-middle">
+              <%= safe_join(@post.content.split("\n"),tag(:br)) %>
               <% if @spot %>
                 <%= link_to "＠#{@spot.address}", spot_path(@spot) %>
               <% end %>
@@ -28,9 +28,9 @@
               <% end %>
             <% else %>
               <% if current_user.following?(@post.user) %>
-                <%= link_to "フォロー外す", user_relationships_path(@post.user), method: :delete, class: "btn btn-primary" %>
+                <%= link_to "フォロー外す", user_relationships_path(@post.user), method: :delete %>
               <% else %>
-                <%= link_to "フォローする", user_relationships_path(@post.user), method: :post, class: "btn btn-success" %>
+                <%= link_to "フォローする", user_relationships_path(@post.user), method: :post %>
               <% end %>
             <% end %>
           </div>

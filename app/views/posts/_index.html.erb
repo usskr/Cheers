@@ -1,14 +1,27 @@
 <% posts.each do |post| %>
-  <div id="post_<%= post.id %>", class="mb-5">
-    <%= attachment_image_tag post.user, :profile_image, size:"60x60", fallback: "cheer.png" %>
-    <%= post.user.name %>
-    <%= post.content %>
-    ＠<%= post.spot.address %>
-    <%= attachment_image_tag post, :image, size:"150x150" %><br>
-    <%= l post.created_at, format: :short %><br>
-    <%= render "posts/category", post: post %>
-    <span class="cheer_btn"><%= render "cheers/cheer_btn", post: post %></span>
-    <span class="comments_count"><%= render "post_comments/comment_btn", post: post %></span>
-    <%= link_to "Show", post_path(post) %>
-  </div>
+  <%= link_to post_path(post) do %>
+    <div class="post_index">
+      <table class="table">
+        <tr>
+          <td style="width: 20%" class="align-middle">
+            <%= attachment_image_tag post.user, :profile_image, size:"60x60", fallback: "cheer.jpeg", style: "border-radius: 50%" %>
+            <%= post.user.name %>
+          </td>
+          <td style="width: 80%" class="align-middle">
+            <%= safe_join(post.content.split("\n"),tag(:br)) %>
+            <% if post.spot %>
+              <%= link_to "＠#{post.spot.address}", spot_path(post.spot) %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div class="text-center mb-3"><%= attachment_image_tag post, :image, size:"600x450", style: "border-radius: 5%" %></div>
+      <div class="d-flex justify-content-around pb-2"  id="post_<%= post.id %>">
+        <div><%= render "posts/category", post: post %></div>
+        <div class="cheer_btn"><%= render "cheers/cheer_btn", post: post %></div>
+        <div class="comments_count"><%= render "post_comments/comment_btn", post: post %></div>
+        <div><%= l post.created_at, format: :short %></div>
+      </div>
+    </div>
+  <% end %>
 <% end %>

@@ -9,7 +9,7 @@
       <span><%= @reviews.average(:rate).to_f.round(1) %></span>
       <% @reviews.each do |review| %>
         <div>
-          <%= attachment_image_tag review.user, :profile_image, size:"40x40", fallback: "cheer.png" %>
+          <%= attachment_image_tag review.user, :profile_image, size:"40x40", fallback: "cheer.jpeg" %>
           <%= review.user.name %>
           <%= review.body %>
         </div>

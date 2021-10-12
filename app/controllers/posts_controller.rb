@@ -18,9 +18,9 @@ class PostsController < ApplicationController
 
   def index
     if params[:category]
-      @posts = Post.where(category: params[:category])
+      @posts = Post.where(category: params[:category]).order(id: "DESC")
     else
-      @posts = Post.all
+      @posts = Post.all.order(id: "DESC")
     end
   end
 
