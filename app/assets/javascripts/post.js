@@ -1,3 +1,4 @@
+//投稿画像のプレビュー
 $('#post_image').on('change', function (e) {
   var reader = new FileReader();
   reader.onload = function (e) {
