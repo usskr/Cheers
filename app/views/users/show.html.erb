@@ -1,42 +1,40 @@
 <div class="container px-5 my-5 px-sm-0">
   <div class="row">
-    <div class="col-sm-6 col-md-4 col-lg-2 mx-auto mb-3 text-center">
-      <%= attachment_image_tag @user, :profile_image, size:"150x150", fallback: "cheer.jpeg", style: "border-radius: 50%" %>
-    </div>
-  </div>
-  <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 px-5 px-sm-0 mx-auto">
+      <div class="text-center mb-4">
+        <%= attachment_image_tag @user, :profile_image, size:"200x200", fallback: "cheer.jpeg", style: "border-radius: 50%" %>
+      </div>
       <table class="table">
         <tr>
-          <th class="pl-5">ユーザー名</th>
-          <td class="pr-5"><%= @user.name %></td>
+          <th style="width:30%">ユーザー名</th>
+          <td style="width:70%"><%= @user.name %></td>
         </tr>
         <% if @user == current_user %>
           <tr>
-            <th class="pl-5">メールアドレス</th>
-            <td class="pr-5"><%= @user.email %></td>
+            <th>メールアドレス</th>
+            <td><%= @user.email %></td>
           </tr>
         <% end %>
         <tr>
-          <th class="pl-5">自己紹介</th>
-          <td class="pr-5"><%= @user.introduction %></td>
+          <th>自己紹介</th>
+          <td><%= safe_join("#{@user.introduction}".split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
-          <th class="pl-5">投稿数</th>
-          <td class="pr-5"><%= @user.posts.count %></td>
+          <th>投稿数</th>
+          <td><%= @user.posts.count %></td>
         </tr>
         <tr>
-          <th class="pl-5">フォロー数</th>
-          <td class="pr-5"><%= link_to @user.followings.count, user_followings_path(@user) %></td>
+          <th>フォロー</th>
+          <td><%= link_to @user.followings.count, user_followings_path(@user) %></td>
         </tr>
         <tr>
-          <th class="pl-5">フォロワー数</th>
-          <td class="pr-5"><%= link_to @user.followers.count, user_followers_path(@user) %></td>
+          <th>フォロワー</th>
+          <td><%= link_to @user.followers.count, user_followers_path(@user) %></td>
         </tr>
       </table>
       <div class="text-center">
         <% if @user == current_user %>
-          <%= link_to "Edit", edit_user_path(current_user), class: "btn btn-secondary" %>
+          <%= link_to "編集", edit_user_path(current_user), class: "btn btn-secondary" %>
         <% else %>
           <% if current_user.following?(@user) %>
             <%= link_to "フォロー中", user_relationships_path(@user), method: :delete, class: "fas fa-user-check btn btn-primary", data: {confirm: "フォローを外しますか？"} %>

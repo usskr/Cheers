@@ -7,7 +7,7 @@
     		<%= post_comment_user.name %>
   		<% end %>
   	</td>
-  	<td class="align-middle"><%= post_comment.comment %></td>
+  	<td class="align-middle"><%= safe_join(post_comment.comment.split("\n"),tag(:br)) %></td>
   	<% if current_user == post_comment_user %>
     	<td class="align-middle"><%= link_to "", post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, remote: true, class: "fas fa-trash", data: {confirm: "コメントを削除しますか？"} %></td>
   	<% else %>

@@ -13,7 +13,7 @@
       <tr>
         <td class="align-middle">
           <%= link_to user_path(user) do %>
-            <%= attachment_image_tag(user, :profile_image, size:'40x40', fallback: "cheer.jpeg", style: "border-radius: 50%") %>
+            <%= attachment_image_tag(user, :profile_image, size:"40x40", fallback: "cheer.jpeg", style: "border-radius: 50%;") %>
           <% end %>
         </td>
         <td class="align-middle"><strong><%= user.name %></strong></td>
