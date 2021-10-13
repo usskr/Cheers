@@ -39,13 +39,14 @@
           <%= link_to "Edit", edit_user_path(current_user), class: "btn btn-secondary" %>
         <% else %>
           <% if current_user.following?(@user) %>
-            <%= link_to "フォロー外す", user_relationships_path(@user), method: :delete, class: "btn btn-primary" %>
+            <%= link_to "フォロー中", user_relationships_path(@user), method: :delete, class: "fas fa-user-check btn btn-primary", data: {confirm: "フォローを外しますか？"} %>
           <% else %>
-            <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-success" %>
+            <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "fas fa-user-plus btn btn-success" %>
           <% end %>
         <% end %>
+        <br><br>
         <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
-          <%= link_to "#{@user.name}さんとのチャット", chat_path(@user), class: "btn btn-info" %></td>
+          <%= link_to " #{@user.name}さんとのチャット", chat_path(@user), class: "fas fa-comments btn btn-info" %></td>
         <% end %>
       </div>
     </div>
