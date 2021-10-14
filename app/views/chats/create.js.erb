@@ -1,2 +1,6 @@
-$('.message').append("<p style='text-align: right;'><%= @chat.message %></p>");
-$('input[type=text]').val("")
+<%# 最新のメッセージまでスクロール %>
+$('.message').animate({scrollTop: $('.message')[0].scrollHeight}, 'fast');
+
+<%# メッセージの非同期通信 %>
+$('.message').append("<%= j(render("message", chat: @chat)) %>");
+$('textarea').val("")

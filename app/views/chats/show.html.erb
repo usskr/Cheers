@@ -1,20 +1,28 @@
-<div class="container px-5 my-5 px-sm-0">
+<div class="container px-5 mt-3 px-sm-0">
   <div class="row">
     <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
-      <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h1>
-      <div class="message">
+      <h3 class="text-center"><%= @user.name %></h3>
+      <div class="message w-100" style="height:65vh;overflow:auto;" id="auto_scroll">
         <% @chats.each do |chat| %>
           <% if chat.user_id == current_user.id %>
-            <p style="text-align: right;"><%= chat.message %></p>
+            <%= render "message", chat: chat %>
           <% else %>
-            <p style="text-align: left;"><%= chat.message %></p>
+            <div class="text-left my-3">
+              <%= attachment_image_tag chat.user, :profile_image, fallback: "cheer.jpeg", size: "50x50", class: "rounded-circle" %>
+              <span class="says"><%= chat.message %></span>
+              <span class="small"><%= l chat.created_at, format: :short %></span>
+            </div>
           <% end %>
         <% end %>
       </div>
-      <%= form_with model: @chat, data: {remote: true} do |f| %>
-        <%= f.text_field :message %>
-        <%= f.hidden_field :room_id %>
-      <% end %>
+      <div class="mt-3">
+        <%= form_with model: @chat, remote: true do |f| %>
+          <%= f.text_area :message, placeholder: "メッセージを入力してください", rows: "2", class: "col-md-11" %>
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "送信" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+<%= javascript_include_tag "scroll.js" %>
