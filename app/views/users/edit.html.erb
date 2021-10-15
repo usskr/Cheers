@@ -1,9 +1,9 @@
 <div class="container px-5 my-5 px-sm-0">
   <div class="row">
-    <div class="col-sm-9 col-md-7 col-lg-5 px-5 px-sm-0 mx-auto mt-4">
-      <h3 class="text-center">登録情報編集</h3>
+    <div class="col-sm-9 col-md-7 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h3>登録情報編集</h3>
       <%= form_with model: @user, local:true do |f| %>
-        <div class="form-group my-4 text-center">
+        <div class="form-group mb-4 text-center">
           <%= attachment_image_tag @user, :profile_image, fallback: "cheer.jpeg", id: "preview", style: "width:200px;height:200px;border-radius:50%;margin-bottom:30px;" %>
           <%= f.attachment_field :profile_image %>
         </div>

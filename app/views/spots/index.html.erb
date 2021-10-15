@@ -2,12 +2,12 @@
   <div class="row">
     <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
       <h3>スポット一覧</h3>
-      <div id="all_map", style="height: 320px; width: 400px;"></div>
-      <table class="table">
+      <div id="all_map"></div>
+      <table class="table table-hover">
         <% @spots.each do |spot| %>
           <tr>
             <td><%= link_to spot.address, spot_path(spot) %></td>
-            <td>レビュー(<%= spot.reviews.count %>件)</td>
+            <td>レビュー <%= spot.reviews.count %>件</td>
             <td>
               <span id="rate_<%= spot.id %>"></span>
               <%= render "reviews/rate_avg", spot: spot, reviews: spot.reviews %>

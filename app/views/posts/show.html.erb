@@ -9,7 +9,7 @@
               <%= @post.user.name %>
             </td>
             <td style="width: 80%" class="align-middle">
-              <%= safe_join(@post.content.split("\n"),tag(:br)) %>
+              <%= safe_join(@post.content.split("\n"),tag(:br)) %><br>
               <% if @spot %>
                 <%= link_to "＠#{@spot.address}", spot_path(@spot) %>
               <% end %>
