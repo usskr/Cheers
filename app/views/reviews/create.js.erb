@@ -1,0 +1,3 @@
+$(".review_comments").html("<%= j(render 'reviews/review_comments', reviews: @reviews, spot: @spot) %>");
+$("#review_body").val("");
+$("#star").location.reload(true);

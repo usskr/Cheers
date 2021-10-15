@@ -3,4 +3,4 @@ $('.message').animate({scrollTop: $('.message')[0].scrollHeight}, 'fast');
 
 <%# メッセージの非同期通信 %>
 $('.message').append("<%= j(render("message", chat: @chat)) %>");
-$('textarea').val("")
+$('#chat_message').val("")

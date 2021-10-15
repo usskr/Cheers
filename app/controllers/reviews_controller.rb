@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
+    @spot = @review.spot
+    @reviews = @spot.reviews
     @review.save
-    redirect_to spot_path(@review.spot)
   end
 
   private

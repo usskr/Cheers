@@ -6,11 +6,21 @@
       <table class="table table-hover">
         <% @spots.each do |spot| %>
           <tr>
-            <td><%= link_to spot.address, spot_path(spot) %></td>
-            <td>レビュー <%= spot.reviews.count %>件</td>
-            <td>
+            <td style= "width:50%"><%= link_to spot.address, spot_path(spot) %></td>
+            <td style= "width:20%">レビュー <%= spot.reviews.count %>件</td>
+            <td style= "width:30%">
               <span id="rate_<%= spot.id %>"></span>
-              <%= render "reviews/rate_avg", spot: spot, reviews: spot.reviews %>
+              <script>
+              $('#rate_<%= spot.id %>').raty({
+                size: 20,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= spot.reviews.average(:rate).to_f.round(1) %>,
+              });
+              </script>
               <span><%= spot.reviews.average(:rate).to_f.round(1) %></span>
             </td>
           </tr>
