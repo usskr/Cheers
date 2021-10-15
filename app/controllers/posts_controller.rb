@@ -47,16 +47,6 @@ class PostsController < ApplicationController
     @keyword = params[:keyword]
   end
 
-  # def rank
-  #   to  = Time.current.at_end_of_day
-  #   from  = (to - 6.day).at_beginning_of_day
-  #   @posts = Post.includes(:cheered_users).
-  #     sort {|a,b|
-  #       b.cheered_users.includes(:cheers).where(created_at: from...to).size <=>
-  #       a.cheered_users.includes(:cheers).where(created_at: from...to).size
-  #     }.first(5)
-  # end
-
   private
 
   def post_params
