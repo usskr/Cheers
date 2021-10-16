@@ -12,6 +12,6 @@ class Post < ApplicationRecord
   enum category: { 食事: 0, 運動: 1, おすすめ: 2, 失敗談: 3 }
 
   def self.search(keyword)
-    where(["content like?", "%#{keyword}%"]).or(where("address like?", "%#{keyword}%"))
+    where(["content like?", "%#{keyword}%"])
   end
 end
