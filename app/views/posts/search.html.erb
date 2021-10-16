@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
       <h3>"<%= @keyword %>"の検索結果</h3>
-      <%= render 'posts/index', posts: @posts %>
+      <% if @posts.present? %>
+        <%= render 'posts/index', posts: @posts %>
+      <% else %>
+        <p class="text-center mt-5">該当はありません</p>
+      <% end %>
     </div>
   </div>
 </div>
