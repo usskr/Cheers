@@ -1,3 +1,2 @@
 $(".review_comments").html("<%= j(render 'reviews/review_comments', reviews: @reviews, spot: @spot) %>");
-$("#review_body").val("");
-$("#star")[0].reset();
+$("#review_form").html("<%= j(render 'reviews/review_form', review: @review, spot: @spot) %>");
