@@ -19,5 +19,5 @@ Rails.application.routes.draw do
   end
   resources :chats, only: [:show, :create]
   resources :spots, only: [:index, :show]
-  resources :reviews, only: [:create]
+  resources :reviews, only: [:create, :destroy]
 end

@@ -18,14 +18,14 @@
   <table class="table mb-5">
   <% reviews.each do |review| %>
     <tr>
-      <td style= "width:10%" class="align-middle text-center">
+      <td style= "width:5%" class="align-middle text-center">
         <%= attachment_image_tag review.user, :profile_image, size: "50x50", fallback: "cheer.jpeg", style: "border-radius: 50%" %>
         <%= review.user.name %>
       </td>
-      <td style= "width:65%" class="align-middle">
+      <td style= "width:70%" class="align-middle">
         <%= safe_join(review.body.split("\n"),tag(:br)) %>
       </td>
-      <td style= "width:25%" class="align-middle">
+      <td style= "width:23%" class="align-middle">
         <span id="rate_<%= review.id %>"></span>
         <script>
         $('#rate_<%= review.id %>').raty({
@@ -38,6 +38,11 @@
           score: <%= review.rate %>,
         });
         </script>
+      </td>
+      <td style= "width:2%" class="align-middle">
+        <% if review.user == current_user %>
+          <%= link_to "", review_path(review), method: :delete, remote: true, class: "fas fa-trash", data: {confirm: "レビューを削除しますか？"} %>
+        <% end %>
       </td>
     </tr>
   <% end %>

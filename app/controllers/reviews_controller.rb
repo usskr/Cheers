@@ -7,6 +7,13 @@ class ReviewsController < ApplicationController
     @review = Review.new #非同期通信でフォームを再読み込みする時に使う
   end
 
+  def destroy
+    review = Review.find(params[:id])
+    @spot = review.spot
+    @reviews = @spot.reviews
+    review.destroy
+  end
+
   private
 
   def review_params
