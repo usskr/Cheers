@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @post.build_spot
+    @spot = Spot.new
   end
 
   def create
@@ -11,9 +12,14 @@ class PostsController < ApplicationController
     if spot_params[:address].present? # addressが入力されている場合
       @spot = Spot.find_or_create_by(address: spot_params[:address]) # 同じaddressがすでにあればfind,なければcreateをする
       @post.spot = @spot # @post.update(spot_id: @spot.id)と同じ。spot_idをpostに入れ込む
+    else
+      @spot = Spot.new
     end
-    @post.save
-    redirect_to post_path(@post)
+    if @post.save
+      redirect_to post_path(@post)
+    else
+      render :new
+    end
   end
 
   def index

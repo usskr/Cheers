@@ -22,4 +22,8 @@ class Post < ApplicationRecord
     post_ids_includes_content = Post.where("content like ?", "%#{keyword}%").ids
     Post.where(id: [*post_ids_belongs_to_spot, *post_ids_includes_content])
   end
+  
+  validates :category, presence: true
+  validates :content, presence: true, length: { maximum: 200 }
+  
 end
