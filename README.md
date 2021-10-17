@@ -50,4 +50,5 @@ https://docs.google.com/spreadsheets/d/14bifH8BbpTFXtC_RvwrGgH2hfvZ01TIXPHc2mieF
 
 ## 使用素材
 - 「LOGO MAKER」 https://logo-maker.stores.jp/
+- 「pixabay」 https://pixabay.com/ja/
 - 外部サービスの画像素材のサービス名とURLは後で記入。
