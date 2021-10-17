@@ -3,8 +3,12 @@
     <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
       <h3><%= @spot.address %>の詳細情報</h3>
       <div id="show_map"></div>
-      <%= render "reviews/review_comments", reviews: @reviews, spot: @spot %>
-      <%= render "reviews/review_form", review: @review, spot: @spot %>
+      <div class="review_comments">
+        <%= render "reviews/review_comments", reviews: @reviews, spot: @spot %>
+      </div>
+      <div id="review_form">
+        <%= render "reviews/review_form", review: @review, spot: @spot %>
+      </div>
     </div>
   </div>
 </div>

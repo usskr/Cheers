@@ -1,10 +1,12 @@
 class ReviewsController < ApplicationController
   def create
-    review = Review.new(review_params)
-    @spot = review.spot
+    @posted_review = Review.new(review_params)
+    @spot = @posted_review.spot
     @reviews = @spot.reviews
-    review.save
-    @review = Review.new #非同期通信でフォームを再読み込みする時に使う
+    unless @posted_review.save
+      render :error
+    end
+    @review = Review.new #非同期通信でフォームを再読込する時に使う
   end
 
   def destroy

@@ -1,50 +1,48 @@
-<div class="review_comments">
-  <div class="text-center mb-3">
-    <h5>レビュー <%= reviews.count %>件</h5>
-    <span class="rate_<%= spot.id %>"></span>
-    <script>
-    $('.rate_<%= spot.id %>').raty({
-      size: 20,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      half: true,
-      readOnly: true,
-      score: <%= reviews.average(:rate).to_f.round(1) %>,
-    });
-    </script>
-    <span><%= reviews.average(:rate).to_f.round(1) %></span>
-  </div>
-  <table class="table mb-5">
-  <% reviews.each do |review| %>
-    <tr>
-      <td style= "width:5%" class="align-middle text-center">
-        <%= attachment_image_tag review.user, :profile_image, size: "50x50", fallback: "cheer.jpeg", style: "border-radius: 50%" %>
-        <%= review.user.name %>
-      </td>
-      <td style= "width:70%" class="align-middle">
-        <%= safe_join(review.body.split("\n"),tag(:br)) %>
-      </td>
-      <td style= "width:23%" class="align-middle">
-        <span id="rate_<%= review.id %>"></span>
-        <script>
-        $('#rate_<%= review.id %>').raty({
-          size: 20,
-          starOff:  '<%= asset_path('star-off.png') %>',
-          starOn : '<%= asset_path('star-on.png') %>',
-          starHalf: '<%= asset_path('star-half.png') %>',
-          half: true,
-          readOnly: true,
-          score: <%= review.rate %>,
-        });
-        </script>
-      </td>
-      <td style= "width:2%" class="align-middle">
-        <% if review.user == current_user %>
-          <%= link_to "", review_path(review), method: :delete, remote: true, class: "fas fa-trash", data: {confirm: "レビューを削除しますか？"} %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-  </table>
+<div class="text-center mb-3">
+  <h5>レビュー <%= reviews.count %>件</h5>
+  <span class="rate_<%= spot.id %>"></span>
+  <script>
+  $('.rate_<%= spot.id %>').raty({
+    size: 20,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: <%= reviews.average(:rate).to_f.round(1) %>,
+  });
+  </script>
+  <span><%= reviews.average(:rate).to_f.round(1) %></span>
 </div>
+<table class="table mb-5">
+<% reviews.each do |review| %>
+  <tr>
+    <td style= "width:5%" class="align-middle text-center">
+      <%= attachment_image_tag review.user, :profile_image, size: "50x50", fallback: "cheer.jpeg", style: "border-radius: 50%" %>
+      <%= review.user.name %>
+    </td>
+    <td style= "width:70%" class="align-middle">
+      <%= safe_join(review.body.split("\n"),tag(:br)) %>
+    </td>
+    <td style= "width:23%" class="align-middle">
+      <span id="rate_<%= review.id %>"></span>
+      <script>
+      $('#rate_<%= review.id %>').raty({
+        size: 20,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= review.rate %>,
+      });
+      </script>
+    </td>
+    <td style= "width:2%" class="align-middle">
+      <% if review.user == current_user %>
+        <%= link_to "", review_path(review), method: :delete, remote: true, class: "fas fa-trash", data: {confirm: "レビューを削除しますか？"} %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>

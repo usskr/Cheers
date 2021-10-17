@@ -1,5 +1,5 @@
-<%= form_with model: review, remote: true, id: "review_form" do |f| %>
-  <div class="form-group">
+<%= form_with model: review do |f| %>
+  <div class="form-group form">
     <%= f.hidden_field :spot_id, value: spot.id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.text_area :body, placeholder: "レビューを入力してください", class: "form-control", rows: "3" %>

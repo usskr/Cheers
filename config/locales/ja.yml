@@ -28,9 +28,10 @@ ja:
       - 11月
       - 12月
   activerecord:
-    models:
-      post: 投稿
     attributes:
       post:
         category: カテゴリ
         content: 投稿内容
+      review:
+        body: レビュー
+        rate: 評価
