@@ -1,7 +1,7 @@
 <div class="container px-5 mt-3 px-sm-0">
   <div class="row">
     <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
-      <%= link_to "", user_path(@user), class:"fas fa-arrow-left" %>
+      <%= link_to "", user_path(@user), class:"fas fa-arrow-left fa-lg" %>
       <h3 class="text-center"><%= @user.name %></h3>
       <div class="message w-100 mt-4" style="height:60vh;overflow:auto;" id="auto_scroll">
         <% @chats.each do |chat| %>
@@ -9,7 +9,7 @@
             <%= render "message", chat: chat %>
           <% else %>
             <div class="text-left my-3">
-              <%= attachment_image_tag chat.user, :profile_image, fallback: "cheer.jpeg", size: "50x50", class: "rounded-circle" %>
+              <%= attachment_image_tag chat.user, :profile_image, fallback: "cheer.jpeg", size: "50x50", style: "border-radius: 50%" %>
               <span class="says"><%= chat.message %></span>
               <span class="small"><%= l chat.created_at, format: :short %></span>
             </div>

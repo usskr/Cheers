@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   def create
     @posted_review = Review.new(review_params)
     @spot = @posted_review.spot
-    @reviews = @spot.reviews
+    @reviews = @spot.reviews.order(id: "DESC")
     unless @posted_review.save
       render :error
     end
@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
   def destroy
     review = Review.find(params[:id])
     @spot = review.spot
-    @reviews = @spot.reviews
+    @reviews = @spot.reviews.order(id: "DESC")
     review.destroy
   end
 

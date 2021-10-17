@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       @spot = Spot.new
     end
     if @post.save
-      redirect_to post_path(@post)
+      redirect_to post_path(@post), notice: "投稿しました"
     else
       render :new
     end
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to posts_path, notice: "投稿を削除しました"
   end
 
   def search

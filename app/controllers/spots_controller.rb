@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
   def index
-    @spots = Spot.all
+    @spots = Spot.all.order(id: "DESC")
     gon.spots = Spot.all
   end
 
@@ -10,7 +10,7 @@ class SpotsController < ApplicationController
     @lng = @spot.longitude
     gon.lat = @lat
     gon.lng = @lng
-    @reviews = @spot.reviews
+    @reviews = @spot.reviews.order(id: "DESC")
     @review = Review.new
   end
 end
