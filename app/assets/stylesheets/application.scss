@@ -53,7 +53,12 @@
   color: #2e3740;
  }
 
+ .pagination {
+  justify-content: center;
+  margin-top: 30px;
+}
+
 /* カテゴリ一覧 */
 .list-group-item {
-    background-color: #e6e6e6;
+  background-color: #e6e6e6;
 }
