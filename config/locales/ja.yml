@@ -35,3 +35,6 @@ ja:
       review:
         body: レビュー
         rate: 評価
+      user:
+        name: ユーザ名
+        introduction: 自己紹介

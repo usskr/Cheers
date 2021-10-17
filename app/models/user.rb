@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+  validates :name, uniqueness: true, length: { minimum: 2, maximum: 10 }
+  validates :introduction, length: { maximum: 100 }
+  validates :email, presence: true, uniqueness: true
 end
