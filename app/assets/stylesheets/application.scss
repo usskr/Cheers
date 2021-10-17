@@ -25,18 +25,6 @@
   background-color: #F2F2F2;
  }
 
- .post_index {
-  background-color: #F2F2F2;
- }
-
- .navbar {
-  background-color: #F8E00E;
- }
-
- .list-group-item {
-  background-color: #E6E6E6;
- }
-
  main {
   flex: 1;
  }
@@ -60,3 +48,8 @@
   color: #696969;
   background-color: lightBlue;
  }
+
+// カテゴリ一覧
+.list-group-item {
+    background-color: #E6E6E6;
+}

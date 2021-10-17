@@ -3,11 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .post_index {
-    background-color: #fff;
+    background-color: #F2F2F2;
     transition: background-color .1s;
     &:hover {
-        background-color: #eee;
+        background-color: rgba(0, 0, 0, 0.075);
     }
 }
-
-    
