@@ -1,5 +1,5 @@
 <div class="text-center">
-  <%= attachment_image_tag(current_user, :profile_image, size:'40x40', fallback: "cheer.jpeg", style: "border-radius: 50%") %>
+  <%= attachment_image_tag(current_user, :profile_image, size: "40x40", fallback: "cheer.jpeg", style: "border-radius: 50%") %>
   <%= current_user.name %>
   <table class="table mt-3">
     <tr>
@@ -32,5 +32,5 @@
       </td>
     </tr>
   </table>
-  <%= link_to "マイページ", user_path(current_user), class: "btn btn-success" %>
+  <%= link_to "マイページ", user_path(current_user), class: "button" %>
 </div>
