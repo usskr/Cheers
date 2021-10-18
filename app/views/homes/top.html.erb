@@ -11,28 +11,85 @@
   <div class="row mt-5">
     <div class="col-md-8 offset-md-2 text-center">
       <h3>健康のためにつぶやきませんか？</h3>
-      <p>Cheers!を使うとこんなことができます</p>
+      <p>cheers！は、健康を考える人のためのアプリです。</p>
+      <h5 class="mt-5">こんな"思い"ありませんか？</h5>
+      <div>
+        <p class="left-says">ダイエットに成功した人の食生活が知りたい</p><br>
+        <p class="right_says">減塩メニューのあるお店を知りたい</p><br>
+        <p class="left-says">自炊して食べるものには気を使っているけれど、運動はなかなか難しい…</p><br>
+        <p class="right_says">みんなどんな運動をしているか気になる</p><br>
+        <p class="left-says">糖分抑えないといけないのについついケーキを食べてしまった…</p><br>
+      </div>
+      <h4 class="mt-5"><%= image_tag "logo4.png", size: "60x40" %> を使うとこんなことができます！</h4>
     </div>
   </div>
+
   <div class="row justify-content-center mt-5">
-    <div class="col-md-5">
-      操作画面
+    <div class="col-md-7">
+      <%= image_tag "img1.png", class: "w-100" %>
     </div>
-    <div class="col-md-5">
-      <h4><u>地図情報を含んだ投稿ができる</u></h4>
-      <p>走った場所や食事をした場所などを投稿し、その場所についてのレビューを集めて情報収集に役立てることができます。</p>
-    </div>
-  </div>
-  <div class="row justify-content-center mt-5">
-    <div class="col-md-5">
-      <h4><u>投稿するとカレンダーに表示される</u></h4>
-      <p>
-        投稿した内容のカテゴリーによってカレンダーにアイコンが表示されるので、モチベーションアップに繋がります。<br>
-        また、他のユーザのカレンダーを見て食事内容や運動量を参考にすることもできます。
+    <div class="col-md-5 d-flex flex-column justify-content-center text-center" style="background: #ffedab;">
+      <h4><u>カテゴリ別で投稿をチェックできる</u></h4>
+      <p class="mt-3">
+        投稿は「食事」「運動」「おすすめ」「失敗談」の<br>
+        4つのカテゴリに分かれているので、<br>
+        見たいカテゴリだけに絞ってチェックすることもできます。<br>
+        気に入った投稿や応援したい投稿にはどんどん<br>
+        応援ボタン<i class= "far fa-flag"></i>を押していきましょう！
       </p>
     </div>
-    <div class="col-md-5">
-      操作画面
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-5 d-flex flex-column justify-content-center text-center" style="background: #ffedab;">
+      <h4><u>投稿するとカレンダーに表示される</u></h4>
+      <p class="mt-3">
+        投稿したカテゴリーのアイコンがカレンダーに<br>
+        表示されるので、モチベーションアップに繋がります。<br>
+        また、他のユーザのカレンダーを見て<br>
+        食事内容や運動量を参考にすることもできます。
+      </p>
+    </div>
+    <div class="col-md-7">
+      <%= image_tag "img1.png", class: "w-100" %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-7">
+      <%= image_tag "img1.png", class: "w-100" %>
+    </div>
+    <div class="col-md-5 d-flex flex-column justify-content-center text-center" style="background: #ffedab;">
+      <h4><u>地図情報を含んだ投稿ができる</u></h4>
+      <p class="mt-3">
+        走った場所や食事をした場所などを投稿し、<br>
+        その場所についてのレビューを集めて<br>
+        情報収集に役立てることができます。
+      </p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-5 d-flex flex-column justify-content-center text-center" style="background: #ffedab;">
+      <h4><u>投稿をキーワードやスポット名で<br>検索することができる</u></h4>
+      <p class="mt-3">
+        投稿に含まれるキーワードで検索することはもちろん、<br>
+        スポット名での検索もできるので、<br>
+        「この公園の走りやすさはどうなんだろう」<br>
+        「気になっていたあのお店の情報を知りたい」<br>
+        という思いに応えることができます。
+      </p>
+    </div>
+    <div class="col-md-7">
+      <%= image_tag "img1.png", class: "w-100" %>
+    </div>
+  </div>
+
+  <div class="row my-5">
+    <div class="col-md-4 mx-auto text-center">
+      <%= link_to new_user_registration_path, class: "btn btn-warning btn-lg btn-block" do %>
+        <%= image_tag "logo4.png", size: "60x40" %> をはじめる
+      <% end %>
     </div>
   </div>
 </div>
