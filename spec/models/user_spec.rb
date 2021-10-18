@@ -43,6 +43,10 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
 
     context 'emailカラム' do
+      it '空欄でないこと' do
+        user.email = ''
+        is_expected.to eq false
+      end
       it '一意性があること' do
         user.email = other_user.email
         is_expected.to eq false
