@@ -18,44 +18,48 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
- body {
+body {
   display: flex;
   flex-flow: column;
   min-height: 100vh;
   background-color: #F2F2F2;
- }
+  main {
+    flex: 1;
+  }
+}
 
- main {
-  flex: 1;
- }
-
- a:hover {
+a:hover {
   text-decoration: none;
- }
+}
 
- h3 {
+h3 {
   text-align: center;
   margin-bottom: 30px;
- }
+}
 
- #error_explanation {
+#error_explanation {
   text-align: center;
   color: red;
- }
+}
 
- #notice {
+#notice {
   text-align: center;
   color: #696969;
   background-color: lightBlue;
- }
+}
 
- .navbar-light .navbar-nav .nav-link {
+.navbar-light .navbar-nav .nav-link {
   color: #2e3740;
- }
+}
 
- .pagination {
+.pagination {
   justify-content: center;
   margin-top: 30px;
+  li {
+    a {
+      color: #696969;
+    }
+  }
 }
 
 /* カテゴリ一覧 */
