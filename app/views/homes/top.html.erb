@@ -9,10 +9,10 @@
 </div>
 <div class="container">
   <div class="row mt-5">
-    <div class="col-md-8 offset-md-2 text-center">
+    <div class="col-md-10 mx-auto text-center">
       <h3>健康のためにつぶやきませんか？</h3>
-      <p>cheers！は、健康を考える人のためのアプリです。</p>
-      <h5 class="mt-5">こんな"思い"ありませんか？</h5>
+      <p><%= image_tag "logo4.png", size: "50x37" %> は、健康を考える人のためのアプリです。</p>
+      <h4 class="side-line">こんな"思い"、ありませんか？</h5>
       <div>
         <p class="left-says">ダイエットに成功した人の食生活が知りたい</p><br>
         <p class="right_says">減塩メニューのあるお店を知りたい</p><br>
@@ -20,17 +20,17 @@
         <p class="right_says">みんなどんな運動をしているか気になる</p><br>
         <p class="left-says">糖分抑えないといけないのについついケーキを食べてしまった…</p><br>
       </div>
-      <h4 class="mt-5"><%= image_tag "logo4.png", size: "60x40" %> を使うとこんなことができます！</h4>
+      <h4 class="side-line"><%= image_tag "logo4.png", size: "50x40" %> を使うとこんなことができます！</h4>
     </div>
   </div>
 
-  <div class="row justify-content-center mt-5">
-    <div class="col-md-7">
+  <div class="row example mt-4">
+    <div class="col-md-7 my-3">
       <%= image_tag "img1.png", class: "w-100" %>
     </div>
-    <div class="col-md-5 d-flex flex-column justify-content-center text-center" style="background: #ffedab;">
-      <h4><u>カテゴリ別で投稿をチェックできる</u></h4>
-      <p class="mt-3">
+    <div class="col-md-5 d-flex flex-column justify-content-center">
+      <h4 class="example-title">カテゴリ別で投稿をチェックできる</h4>
+      <p class="example-body">
         投稿は「食事」「運動」「おすすめ」「失敗談」の<br>
         4つのカテゴリに分かれているので、<br>
         見たいカテゴリだけに絞ってチェックすることもできます。<br>
@@ -40,28 +40,28 @@
     </div>
   </div>
 
-  <div class="row justify-content-center mt-5">
-    <div class="col-md-5 d-flex flex-column justify-content-center text-center" style="background: #ffedab;">
-      <h4><u>投稿するとカレンダーに表示される</u></h4>
-      <p class="mt-3">
+  <div class="row example">
+    <div class="col-md-5 d-flex flex-column justify-content-center">
+      <h4 class="example-title">投稿するとカレンダーに表示される</h4>
+      <p class="example-body">
         投稿したカテゴリーのアイコンがカレンダーに<br>
         表示されるので、モチベーションアップに繋がります。<br>
         また、他のユーザのカレンダーを見て<br>
         食事内容や運動量を参考にすることもできます。
       </p>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-7 my-3">
       <%= image_tag "img1.png", class: "w-100" %>
     </div>
   </div>
 
-  <div class="row justify-content-center mt-5">
-    <div class="col-md-7">
+  <div class="row example">
+    <div class="col-md-7 my-3">
       <%= image_tag "img1.png", class: "w-100" %>
     </div>
-    <div class="col-md-5 d-flex flex-column justify-content-center text-center" style="background: #ffedab;">
-      <h4><u>地図情報を含んだ投稿ができる</u></h4>
-      <p class="mt-3">
+    <div class="col-md-5 d-flex flex-column justify-content-center">
+      <h4 class="example-title">地図情報を含んだ投稿ができる</h4>
+      <p class="example-body">
         走った場所や食事をした場所などを投稿し、<br>
         その場所についてのレビューを集めて<br>
         情報収集に役立てることができます。
@@ -69,10 +69,10 @@
     </div>
   </div>
 
-  <div class="row justify-content-center mt-5">
-    <div class="col-md-5 d-flex flex-column justify-content-center text-center" style="background: #ffedab;">
-      <h4><u>投稿をキーワードやスポット名で<br>検索することができる</u></h4>
-      <p class="mt-3">
+  <div class="row example">
+    <div class="col-md-5 d-flex flex-column justify-content-center">
+      <h4 class="example-title">投稿をスポット名で検索できる</h4>
+      <p class="example-body">
         投稿に含まれるキーワードで検索することはもちろん、<br>
         スポット名での検索もできるので、<br>
         「この公園の走りやすさはどうなんだろう」<br>
@@ -80,8 +80,21 @@
         という思いに応えることができます。
       </p>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-7 my-3">
       <%= image_tag "img1.png", class: "w-100" %>
+    </div>
+  </div>
+  
+  <div class="row example">
+    <div class="col-md-7 my-3">
+      <%= image_tag "img1.png", class: "w-100" %>
+    </div>
+    <div class="col-md-5 d-flex flex-column justify-content-center">
+      <h4 class="example-title">相互フォローでDMを送れる</h4>
+      <p class="example-body">
+        相互フォロー状態になるとDMを送れるようになるので<br>
+        プライベートなやり取りもCheers!で完結します。
+      </p>
     </div>
   </div>
 
