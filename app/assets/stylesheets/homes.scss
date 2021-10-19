@@ -7,23 +7,23 @@
 }
 
  .image1 {
-  background-image: url(running.jpg);
+  background-image: url(top/running.jpg);
  }
 
   .image2 {
-  background-image: url(running.jpg);
+  background-image: url(top/salad.jpg);
  }
 
   .image3 {
-  background-image: url(running.jpg);
+  background-image: url(top/yoga.jpg);
  }
 
   .image4 {
-  background-image: url(running.jpg);
+  background-image: url(top/bowl.jpg);
  }
 
   .image5 {
-  background-image: url(running.jpg);
+  background-image: url(top/gym.jpg);
  }
 
 /* 左吹き出しの文章 */
@@ -84,6 +84,12 @@
   }
 }
 
+/* ヘッドメッセージ */
+.head-message {
+  display: inline-block;
+  background:linear-gradient(transparent 70%, #ffedab 0%);
+}
+
 /* Cheers!でできること */
 .example {
   justify-content: center;
@@ -92,7 +98,7 @@
   margin-top: 20px;
   border-radius: 12px;
   .example-title {
-    background:linear-gradient(transparent 70%, #ffedab 0%);
+    @extend .head-message;
     margin: 0 auto;
   }
   .example-body {
@@ -100,4 +106,3 @@
     line-height: 30px
   }
 }
-

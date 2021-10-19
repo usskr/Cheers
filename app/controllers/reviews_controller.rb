@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
     unless @posted_review.save
       render :error
     end
-    @review = Review.new #非同期通信でフォームを再読込する時に使う
+    @review = Review.new # 非同期通信でフォームを再読込する時に使う
   end
 
   def destroy

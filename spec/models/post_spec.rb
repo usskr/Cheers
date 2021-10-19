@@ -8,7 +8,7 @@ RSpec.describe 'Postモデルのテスト', type: :model do
       expect(FactoryBot.build(:post)).to be_valid
     end
   end
-  
+
   describe 'バリデーションのテスト' do
     subject { post.valid? }
 
