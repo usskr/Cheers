@@ -10,6 +10,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to edit_user_path(current_user)
+    end
   end
 
   def update
@@ -20,18 +23,17 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def leave_page
     @user = User.find(params[:id])
   end
-  
+
   def leave
     @user = User.find(params[:id])
     @user.update(is_valid: false)
     reset_session
     redirect_to root_path, notice: "退会手続きが完了しました"
   end
-    
 
   private
 

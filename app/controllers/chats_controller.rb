@@ -31,7 +31,7 @@ class ChatsController < ApplicationController
   def follow_each_other
     user = User.find(params[:id])
     unless current_user.following?(user) && user.following?(current_user)
-      redirect_to books_path
+      redirect_to users_path
     end
   end
 end
