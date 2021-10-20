@@ -17,9 +17,6 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
-    # collection do
-    #   get :rank
-    # end
   end
   resources :chats, only: [:show, :create]
   resources :spots, only: [:index, :show]

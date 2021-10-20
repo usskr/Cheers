@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:top, :about]
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :reject_inactive_user, only: [:create]
+  before_action :reject_inactive_user, if: :devise_controller?, only: [:create]
   
   protected
 
