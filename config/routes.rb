@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "/about" => "homes#about"
   resources :users do
+    member do
+      get "leave_page"
+      patch "leave"
+    end
     resource :relationships, only: [:create, :destroy]
     get "followings" => "relationships#followings", as: "followings"
     get "followers" => "relationships#followers", as: "followers"

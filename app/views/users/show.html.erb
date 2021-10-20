@@ -1,63 +1,71 @@
 <div class="container px-5 my-5 px-sm-0">
-  <div class="row">
-    <div class="col-sm-9 col-md-7 col-lg-5 px-5 px-sm-0 mx-auto">
-      <div class="text-center mb-4">
-        <%= attachment_image_tag @user, :profile_image, size:"200x200", fallback: "cheer.jpeg", style: "border-radius: 50%" %>
-      </div>
-      <table class="table">
-        <tr>
-          <th style="width:30%">ユーザー名</th>
-          <td style="width:70%"><%= @user.name %></td>
-        </tr>
-        <% if @user == current_user %>
+  <% if @user.is_valid == true %>
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 px-5 px-sm-0 mx-auto">
+        <div class="text-center mb-4">
+          <%= attachment_image_tag @user, :profile_image, size: "200x200", fallback: "cheer.jpeg", style: "border-radius: 50%" %>
+        </div>
+        <table class="table">
           <tr>
-            <th>メールアドレス</th>
-            <td><%= @user.email %></td>
+            <th style="width:30%">ユーザー名</th>
+            <td style="width:70%"><%= @user.name %></td>
           </tr>
-        <% end %>
-        <tr>
-          <th>自己紹介</th>
-          <td><%= safe_join("#{@user.introduction}".split("\n"),tag(:br)) %></td>
-        </tr>
-        <tr>
-          <th>投稿数</th>
-          <td><%= @user.posts.count %></td>
-        </tr>
-        <tr>
-          <th>フォロー</th>
-          <td><%= link_to @user.followings.count, user_followings_path(@user) %></td>
-        </tr>
-        <tr>
-          <th>フォロワー</th>
-          <td><%= link_to @user.followers.count, user_followers_path(@user) %></td>
-        </tr>
-      </table>
-      <div class="text-center">
-        <% if @user == current_user %>
-          <%= link_to "編集", edit_user_path(current_user), class: "btn btn-secondary" %>
-        <% else %>
-          <% if current_user.following?(@user) %>
-            <%= link_to "フォロー中", user_relationships_path(@user), method: :delete, class: "fas fa-user-check btn btn-primary", data: {confirm: "フォローを外しますか？"} %>
-          <% else %>
-            <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "fas fa-user-plus btn btn-success" %>
+          <% if @user == current_user %>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @user.email %></td>
+            </tr>
           <% end %>
-        <% end %>
-        <br><br>
-        <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
-          <%= link_to " #{@user.name}さんとのチャット", chat_path(@user), class: "fas fa-comments btn btn-info" %></td>
-        <% end %>
+          <tr>
+            <th>自己紹介</th>
+            <td><%= safe_join("#{@user.introduction}".split("\n"),tag(:br)) %></td>
+          </tr>
+          <tr>
+            <th>投稿数</th>
+            <td><%= @user.posts.count %></td>
+          </tr>
+          <tr>
+            <th>フォロー</th>
+            <td><%= link_to @user.followings.count, user_followings_path(@user) %></td>
+          </tr>
+          <tr>
+            <th>フォロワー</th>
+            <td><%= link_to @user.followers.count, user_followers_path(@user) %></td>
+          </tr>
+        </table>
+        <div class="text-center">
+          <% if @user == current_user %>
+            <%= link_to "編集", edit_user_path(current_user), class: "btn btn-secondary" %>
+          <% else %>
+            <% if current_user.following?(@user) %>
+              <%= link_to "フォロー中", user_relationships_path(@user), method: :delete, class: "fas fa-user-check btn btn-primary", data: {confirm: "フォローを外しますか？"} %>
+            <% else %>
+              <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "fas fa-user-plus btn btn-success" %>
+            <% end %>
+          <% end %>
+          <br><br>
+          <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
+            <%= link_to " #{@user.name}さんとのチャット", chat_path(@user), class: "fas fa-comments btn btn-info" %></td>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto mt-5">
-      <h3 class="text-center mt-5">最近の投稿</h3>
-      <div style="width:100%;height:500px;overflow:auto;border:ridge;margin-bottom:100px;">
-        <%= render "posts/index", posts: @posts %>
-      </div>
-      <div id="events_calendar">
-        <%= render partial: "calendar", locals: {user: @user} %>
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto mt-5">
+        <h3 class="text-center mt-5">最近の投稿</h3>
+        <div style="width:100%;height:500px;overflow:auto;border:ridge;margin-bottom:100px;">
+          <%= render "posts/index", posts: @posts %>
+        </div>
+        <div id="events_calendar">
+          <%= render partial: "calendar", locals: {user: @user} %>
+        </div>
       </div>
     </div>
-  </div>
+  <% else %>
+    <div class="row">
+      <div class="col-sm-8 col-md-6 col-lg-4 px-5 px-sm-0 mx-auto">
+        <h3>このユーザは退会済です</h3>
+      </div>
+    </div>
+  <% end %>
 </div>
