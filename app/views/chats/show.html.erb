@@ -8,10 +8,10 @@
           <% if chat.user_id == current_user.id %>
             <%= render "message", chat: chat %>
           <% else %>
-            <div class="text-left my-3">
+            <div class="d-flex justify-content-start align-items-center my-3">
               <%= attachment_image_tag chat.user, :profile_image, fallback: "cheer.jpeg", size: "50x50", style: "border-radius: 50%" %>
-              <span class="says"><%= chat.message %></span>
-              <span class="small"><%= l chat.created_at, format: :short %></span>
+              <span class="says"><%= safe_join(chat.message.split("\n"),tag(:br)) %></span>
+              <span class="small ml-1"><%= l chat.created_at, format: :short %></span>
             </div>
           <% end %>
         <% end %>
