@@ -30,13 +30,11 @@
                 <i class="fas fa-trash"></i>
               <% end %>
             <% else %>
-              <% if current_user.following?(@post.user) %>
-                <%= link_to "フォロー中", user_relationships_path(@post.user), method: :delete, class: "fas fa-user-check btn btn-primary btn-sm", data: {confirm: "フォローを外しますか？"} %>
-              <% else %>
-                <% if @post.user.is_valid == true %>
-                  <%= link_to "フォローする", user_relationships_path(@post.user), method: :post, class: "fas fa-user-plus btn btn-success btn-sm" %>
+              <% if @post.user.is_valid == true %>
+                <% if current_user.following?(@post.user) %>
+                  <%= link_to "フォロー中", user_relationships_path(@post.user), method: :delete, class: "fas fa-user-check btn btn-primary btn-sm", data: {confirm: "フォローを外しますか？"} %>
                 <% else %>
-                  <%= link_to "フォローする", user_relationships_path(@post.user), method: :post, class: "fas fa-user-plus btn btn-success btn-sm disabled" %>
+                  <%= link_to "フォローする", user_relationships_path(@post.user), method: :post, class: "fas fa-user-plus btn btn-success btn-sm" %>
                 <% end %>
               <% end %>
             <% end %>

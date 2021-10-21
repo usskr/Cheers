@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.where(is_valid: true).page(params[:page]).reverse_order
   end
 
   def edit
