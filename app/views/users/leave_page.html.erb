@@ -1,13 +1,15 @@
 <div class="container px-5 my-5 px-sm-0">
   <div class="row">
-    <div class="col-sm-9 col-md-7 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-sm-10 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
       <div>
         <%= link_to " 戻る", user_path(@user), class: "fas fa-chevron-left mb-4" %>
       </div>
       <h3>本当に退会しますか？</h3>
-      <p class="text-center">
-        退会した場合でも、投稿やコメントは残ります。<br>
-        残したくない投稿は削除してから退会ください。
+      <p class="text-center" style="line-height:30px;">
+        Cheers!ではユーザの情報収集に役立てるため、<br>
+        退会したユーザの投稿やコメントも残しています。<br>
+        残したくない投稿は削除してから退会いただきますようお願いいたします。<br>
+        ※退会したユーザのマイページは閲覧不可になります。
       </p>
       <div class="text-center">
         <%= link_to "退会する", leave_user_path(@user), method: :patch, class: "btn btn-danger mt-5", data: {confirm: "退会手続きを実行します"} %>

@@ -34,12 +34,13 @@ Post.create!(user_id: 1, content: "今日は5km走りました〜！\r\nいつ�
 Post.create!(user_id: 4, content: "友達と新宿御苑でヨガをしてきました。\r\n久しぶりに行きましたが、こんなに芝生ふかふかだったっけ！？ってびっくりするくらい\r\nいい芝生でした！", category: "運動", spot_id: 5, image: open("./app/assets/images/post/sinjyuku_gyoen.jpeg"), start_time: "2021-10-07", created_at: "2021-10-07 16:17")
 Post.create!(user_id: 5, content: "代々木公園でランニングしてみた。\r\n走っていても犬ばかり見てしまう。", category: "運動", spot_id: 2, start_time: "2021-10-10", created_at: "2021-10-10 15:59")
 Post.create!(user_id: 5, content: "どうしてもお腹が空いてしまい…\r\nこんな時間に夜食を食べてしまいました", category: "失敗談", start_time: "2021-10-11", created_at: "2021-10-11 01:39")
-Post.create!(user_id: 2, content: "暑かったので、トマトとツナと大葉の素麺に。\r\n麺つゆは気持ち程度、今日も減塩！", category: "食事", image: open("./app/assets/images/post/noodles.jpeg"), start_time: "2021-10-12", created_at: "2021-10-12 13:10")
+Post.create!(user_id: 2, content: "暑かったので、トマトとツナと大葉のそうめんに。\r\n麺つゆは気持ち程度、今日も減塩！", category: "食事", image: open("./app/assets/images/post/noodles.jpeg"), start_time: "2021-10-12", created_at: "2021-10-12 13:10")
 Post.create!(user_id: 3, content: "タニタ食堂でランチ。\r\nいつもどれだけ塩分を取り過ぎていたのかがよくわかり反省。", category: "食事", spot_id: 4, start_time: "2021-10-13", created_at: "2021-10-13 12:47")
 Post.create!(user_id: 2, content: "アクアパッツァを作ってみました！\r\n塩は使っていませんが、鯛とあさりの出汁で十分美味しいです。", category: "食事", image: open("./app/assets/images/post/acqua_pazza.jpeg"), start_time: "2021-10-16", created_at: "2021-10-16 22:42")
-Post.create!(user_id: 1, content: "b-monsterすごくおすすめです！\r\nハードですがとっても楽しいです！！", category: "おすすめ", spot_id: 3, start_time: "2021-10-16", created_at: "2021-10-16 23:29")
+Post.create!(user_id: 1, content: "b-monsterおすすめです！\r\nハードですがとっても楽しいです！！", category: "おすすめ", spot_id: 3, start_time: "2021-10-16", created_at: "2021-10-16 23:29")
 Post.create!(user_id: 5, content: "ボルダリングに初挑戦。なかなか難しい。", category: "運動", image: open("./app/assets/images/post/bouldering.jpg"), start_time: "2021-10-17", created_at: "2021-10-17 19:08")
 Post.create!(user_id: 4, content: "今日も早朝テニスをしてきました！\r\n日焼けの心配もなく、一日を有効に使えるのでおすすめです！", category: "おすすめ", image: open("./app/assets/images/post/tennis_court.jpeg"), start_time: "2021-10-18", created_at: "2021-10-18 05:47")
+Post.create!(user_id: 1, content: "8km達成〜！\r\nまずは再来月の10kmマラソンの大会にチャレンジしてみようかな？", category: "運動", spot_id: 2, start_time: "2021-10-19", created_at: "2021-10-19 21:50")
 
 PostComment.create!(post_id: 2, user_id: 4, comment: "確かに山菜そばなら罪悪感ゼロですね！笑")
 PostComment.create!(post_id: 3, user_id: 2, comment: "平日に5kmも走るなんて素晴らしいですね！応援してます！")
@@ -51,7 +52,6 @@ PostComment.create!(post_id: 9, user_id: 3, comment: "美味しそうですね�
 PostComment.create!(post_id: 9, user_id: 1, comment: "おしゃれですね〜！すごい！")
 PostComment.create!(post_id: 9, user_id: 4, comment: "綺麗！！")
 PostComment.create!(post_id: 12, user_id: 5, comment: "私も朝ジム派です。気持ちがいいですよね！")
-
 
 Cheer.create!(post_id: 1, user_id: 4)
 Cheer.create!(post_id: 1, user_id: 5)
@@ -84,6 +84,11 @@ Relationship.create!(follower_id: 4, followed_id: 2)
 Relationship.create!(follower_id: 4, followed_id: 3)
 Relationship.create!(follower_id: 4, followed_id: 5)
 Relationship.create!(follower_id: 5, followed_id: 1)
+
+Room.create!
+
+UserRoom.create!(room_id: 1, user_id: 1)
+UserRoom.create!(room_id: 1, user_id: 4)
 
 Chat.create!(room_id: 1, user_id: 1, message: "フォローありがとうございます！", created_at: "2021-10-19 19:21")
 Chat.create!(room_id: 1, user_id: 4, message: "こちらこそです！今日もランニングされたんですか？", created_at: "2021-10-19 19:42")
