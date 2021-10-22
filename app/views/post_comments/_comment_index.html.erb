@@ -1,13 +1,13 @@
 <% post.post_comments.each do |post_comment| %>
   <% post_comment_user = post_comment.user %>
   <tr>
-  	<td>
+  	<td style="width: 10%" class="text-center">
   		<%= link_to user_path(post_comment_user), class: "user_#{post_comment_user.id}" do %>
     		<%= attachment_image_tag post_comment_user, :profile_image, fallback: "cheer.jpeg", size: "50x50", style: "border-radius: 50%" %>
     		<%= post_comment_user.name %>
   		<% end %>
   	</td>
-  	<td class="align-middle"><%= safe_join(post_comment.comment.split("\n"),tag(:br)) %></td>
+  	<td  style="width: 85%" class="align-middle"><%= safe_join(post_comment.comment.split("\n"),tag(:br)) %></td>
   	<% if current_user == post_comment_user %>
     	<td class="align-middle"><%= link_to "", post_post_comment_path(post_comment.post_id, post_comment.id), method: :delete, remote: true, class: "fas fa-trash", data: {confirm: "コメントを削除しますか？"} %></td>
   	<% else %>
