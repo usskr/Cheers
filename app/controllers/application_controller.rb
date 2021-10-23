@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:top, :about]
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :reject_inactive_user, if: :devise_controller?, only: [:create]
-  
+
   protected
 
   def after_sign_in_path_for(resource)
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   end
-  
+
   def reject_inactive_user
     @user = User.find_by(name: params[:user][:name])
     if @user

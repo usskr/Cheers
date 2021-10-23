@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Userモデルのテスト', type: :model do
   describe '保存テスト' do
-    it "有効なユーザ情報の場合は保存されるか" do
+    it '有効なユーザ情報の場合は保存されるか' do
       expect(FactoryBot.build(:user)).to be_valid
     end
   end
