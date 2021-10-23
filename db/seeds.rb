@@ -40,7 +40,7 @@ Post.create!(user_id: 2, content: "アクアパッツァを作ってみました
 Post.create!(user_id: 1, content: "b-monsterおすすめです！\r\nハードですがとっても楽しいです！！", category: "おすすめ", spot_id: 3, start_time: "2021-10-16", created_at: "2021-10-16 23:29")
 Post.create!(user_id: 5, content: "ボルダリングに初挑戦。なかなか難しい。", category: "運動", image: open("./app/assets/images/post/bouldering.jpg"), start_time: "2021-10-17", created_at: "2021-10-17 19:08")
 Post.create!(user_id: 4, content: "今日も早朝テニスをしてきました！\r\n日焼けの心配もなく、一日を有効に使えるのでおすすめです！", category: "おすすめ", image: open("./app/assets/images/post/tennis_court.jpeg"), start_time: "2021-10-18", created_at: "2021-10-18 05:47")
-Post.create!(user_id: 1, content: "8km達成〜！\r\nまずは再来月の10kmマラソンの大会にチャレンジしてみようかな？", category: "運動", spot_id: 2, start_time: "2021-10-19", created_at: "2021-10-19 21:50")
+Post.create!(user_id: 1, content: "8km達成！\r\nまずは3ヶ月後の10kmマラソンの大会にチャレンジしてみようと思います！", category: "運動", spot_id: 2, start_time: "2021-10-19", created_at: "2021-10-19 21:50")
 
 PostComment.create!(post_id: 2, user_id: 4, comment: "確かに山菜そばなら罪悪感ゼロですね！笑")
 PostComment.create!(post_id: 3, user_id: 2, comment: "平日に5kmも走るなんて素晴らしいですね！応援してます！")
@@ -50,7 +50,7 @@ PostComment.create!(post_id: 4, user_id: 1, comment: "ありがとうござい�
 PostComment.create!(post_id: 5, user_id: 3, comment: "その気持ちよくわかります。")
 PostComment.create!(post_id: 9, user_id: 3, comment: "美味しそうですね。今度挑戦してみたいと思います。")
 PostComment.create!(post_id: 9, user_id: 1, comment: "おしゃれですね〜！すごい！")
-PostComment.create!(post_id: 9, user_id: 4, comment: "綺麗！！")
+PostComment.create!(post_id: 9, user_id: 4, comment: "綺麗！！レシピ知りたいです！")
 PostComment.create!(post_id: 12, user_id: 5, comment: "私も朝ジム派です。気持ちがいいですよね！")
 
 Cheer.create!(post_id: 1, user_id: 4)
