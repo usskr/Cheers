@@ -6,10 +6,10 @@
 .says {
   display: inline-block;
   position: relative;
-  margin: 0 0 0 10px;
-  padding: 5px 13px;
+  margin: 0 0 0 15px;
+  padding: 6px 13px;
   border-radius: 12px;
-  background: #d7ebfe;
+  background: #ddd;
   &:after {
     content: "";
     display: inline-block;
@@ -17,7 +17,7 @@
     top: 15px;
     left: -15px;
     border: 5px solid transparent;
-    border-right: 12px solid #d7ebfe;
+    border-right: 12px solid #ddd;
   }
 }
 
@@ -25,10 +25,10 @@
 .current_user_says {
   display: inline-block;
   position: relative;
-  margin: 0 10px 0 0;
-  padding: 5px 13px;
+  margin: 0 15px 0 0;
+  padding: 6px 13px;
   border-radius: 12px;
-  background: #4ad5eb;
+  background: #ffedab;
   &:after {
     content: "";
     display: inline-block;
@@ -36,6 +36,6 @@
     top: 15px;
     right: -15px;
     border: 5px solid transparent;
-    border-left: 12px solid #4ad5eb;
+    border-left: 12px solid #ffedab;
   }
 }
