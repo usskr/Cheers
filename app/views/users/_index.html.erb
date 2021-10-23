@@ -11,16 +11,16 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td class="align-middle">
+        <td class="align-middle" style="width: 10%;">
           <%= link_to user_path(user) do %>
-            <%= attachment_image_tag(user, :profile_image, size: "40x40", fallback: "cheer.jpeg", style: "border-radius: 50%;") %>
+            <%= attachment_image_tag(user, :profile_image, size: "60x60", fallback: "cheer.jpeg", style: "border-radius: 50%;") %>
           <% end %>
         </td>
-        <td class="align-middle"><strong><%= user.name %></strong></td>
-        <td class="align-middle"><%= user.posts.count %></td>
-        <td class="align-middle"><%= link_to user.followings.where(is_valid: true).count, user_followings_path(user) %></td>
-        <td class="align-middle"><%= link_to user.followers.where(is_valid: true).count, user_followers_path(user) %></td>
-        <td class="align-middle">
+        <td class="align-middle text-left" style="width: 15%;"><strong><%= user.name %></strong></td>
+        <td class="align-middle" style="width: 15%;"><%= user.posts.count %></td>
+        <td class="align-middle" style="width: 15%;"><%= link_to user.followings.where(is_valid: true).count, user_followings_path(user) %></td>
+        <td class="align-middle" style="width: 15%;"><%= link_to user.followers.where(is_valid: true).count, user_followers_path(user) %></td>
+        <td class="align-middle" style="width: 20%;">
           <% if user != current_user %>
             <% if current_user.following?(user) %>
               <%= link_to "フォロー中", user_relationships_path(user), method: :delete, class: "fas fa-user-check btn btn-primary btn-sm", data: {confirm: "フォローを外しますか？"} %>
@@ -29,7 +29,7 @@
             <% end %>
           <% end %>
         </td>
-        <td class="align-middle"><%= link_to "", user_path(user), class: "fas fa-search" %></td>
+        <td class="align-middle" style="width: 10%;"><%= link_to "", user_path(user), class: "fas fa-search" %></td>
       </tr>
     <% end %>
   </tbody>
