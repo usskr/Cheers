@@ -1,1 +1,1 @@
-$("#review_form").prepend("<%= j(render "layouts/errors", obj: @posted_review) %>");
+$("#review_error").html("<%= j(render "layouts/errors", obj: @review) %>");

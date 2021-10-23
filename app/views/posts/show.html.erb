@@ -45,7 +45,8 @@
       <table class="table post_comments mt-5">
         <%= render "post_comments/comment_index", post: @post %>
       </table>
-      <%= form_with model:[@post,@post_comment], class: "text-center", remote: true do |f| %>
+      <div id="comment_error"></div>
+      <%= form_with model:[@post, @post_comment], class: "text-center", remote: true do |f| %>
         <%= f.text_area :comment, placeholder: "コメント", class: "form-control" %>
         <%= f.submit "送信", class: "btn btn-success mt-3" %>
       <% end %>

@@ -7,6 +7,7 @@
         <%= render "reviews/review_comments", reviews: @reviews, spot: @spot %>
       </div>
       <%= paginate @reviews %>
+      <div id="review_error"></div>
       <div id="review_form">
         <%= render "reviews/review_form", review: @review, spot: @spot %>
       </div>

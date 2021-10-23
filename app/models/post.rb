@@ -16,7 +16,7 @@ class Post < ApplicationRecord
     spots = Spot.where("address like ?", "%#{keyword}%")
     if !spots.nil?
       spots.each do |spot|
-        post_ids_belongs_to_spot.concat(spot.posts.ids) # concat配列を連結
+        post_ids_belongs_to_spot.concat(spot.posts.ids) # concat：配列を連結
       end
     end
     post_ids_includes_content = Post.where("content like ?", "%#{keyword}%").ids

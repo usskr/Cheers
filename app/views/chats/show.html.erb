@@ -16,6 +16,7 @@
           <% end %>
         <% end %>
       </div>
+      <div id="chat_error"></div>
       <div class="mt-3">
         <%= form_with model: @chat, remote: true do |f| %>
           <%= f.text_area :message, placeholder: "メッセージを入力してください", rows: "2", class: "col-md-11" %>
