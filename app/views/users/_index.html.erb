@@ -17,7 +17,7 @@
           <% end %>
         </td>
         <td class="align-middle text-left" style="width: 15%;"><strong><%= user.name %></strong></td>
-        <td class="align-middle" style="width: 15%;"><%= user.posts.count %></td>
+        <td class="align-middle" style="width: 15%;"><%= link_to user.posts.count, user_path(user, anchor: "current_posts") %></td>
         <td class="align-middle" style="width: 15%;"><%= link_to user.followings.where(is_valid: true).count, user_followings_path(user) %></td>
         <td class="align-middle" style="width: 15%;"><%= link_to user.followers.where(is_valid: true).count, user_followers_path(user) %></td>
         <td class="align-middle" style="width: 20%;">
