@@ -1,7 +1,8 @@
-<div class="container px-5 my-5 px-sm-0">
+<div class="container mb-5">
   <div class="row">
     <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto">
-      <h3><%= @user.name %>さんがフォロー中のユーザ</h3>
+      <%= link_to " 戻る", users_path, class: "fas fa-chevron-left my-4" %>
+      <h3><strong><%= @user.name %></strong>さんがフォロー中のユーザ</h3>
       <% if @users.exists? %>
         <%= render "/users/index", users: @users %>
       <% else %>
