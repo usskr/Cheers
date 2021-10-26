@@ -34,12 +34,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @spot = @post.spot
-    if @spot
-      @lat = @spot.latitude
-      @lng = @spot.longitude
-      gon.lat = @lat
-      gon.lng = @lng
-    end
   end
 
   def destroy
