@@ -1,17 +1,17 @@
 <% if post.category == "食事" %>
-  <%= link_to post_path(post) do %>
+  <%= link_to "/posts?category=0" do %>
     <i class="fas fa-utensils"></i>
   <% end %>
 <% elsif post.category == "運動" %>
-  <%= link_to post_path(post) do %>
+  <%= link_to "/posts?category=1" do %>
     <i class="fas fa-dumbbell"></i>
   <% end %>
 <% elsif post.category == "おすすめ" %>
-  <%= link_to post_path(post) do %>
+  <%= link_to "/posts?category=2" do %>
     <i class="fas fa-bullhorn"></i>
   <% end %>
 <% else %>
-  <%= link_to post_path(post) do %>
+  <%= link_to "/posts?category=3" do %>
     <i class="fas fa-dizzy"></i>
   <% end %>
 <% end %>
