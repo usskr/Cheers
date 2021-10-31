@@ -1,4 +1,4 @@
-<div class="text-center" style="position:fixed;">
+<div class="text-center">
   <%= attachment_image_tag(current_user, :profile_image, size: "40x40", fallback: "cheer.jpeg", style: "border-radius: 50%") %>
   <%= current_user.name %>
   <table class="table mt-3">
@@ -36,6 +36,6 @@
     <%= link_to " カレンダー", user_path(current_user, anchor: "events_calendar"), class: "fas fa-calendar-alt button mb-3" %>
   </div>
   <div>
-    <%= link_to " 新規投稿", new_post_path, class: "btn btn-info far fa-file" %>
+    <%= link_to " 新規投稿", new_post_path, class: "btn btn-info far fa-file mb-3" %>
   </div>
 </div>
