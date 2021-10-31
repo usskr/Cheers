@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, skip: [:unlocks, :passwords, :mailer, :confimations]
   root to: "homes#top"
   resources :users do
     member do
