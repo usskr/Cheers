@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.order(id: "DESC")
+    cheers = Cheer.where(user_id: @user.id).pluck(:post_id)
+    @cheer_posts = Post.find(cheers)
   end
 
   def index

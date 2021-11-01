@@ -51,12 +51,24 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto mt-5" id="current_posts">
+    <div class="row" id="current_posts">
+      <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto mt-5">
         <h3 class="text-center mt-5">最近の投稿</h3>
         <div class="current_posts">
           <%= render "posts/index", posts: @posts %>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto mt-5">
+        <h3 class="text-center mt-5">応援した投稿</h3>
+        <div class="cheer_posts">
+          <%= render "posts/index", posts: @cheer_posts %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto mt-5">
         <div id="events_calendar">
           <%= render partial: "calendar", locals: {user: @user} %>
         </div>
