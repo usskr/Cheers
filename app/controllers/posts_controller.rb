@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     else
       @spot = Spot.new
     end
+    @post.score = Language.get_data(post_params[:content])
     if @post.save
       redirect_to post_path(@post), notice: "投稿しました"
     else

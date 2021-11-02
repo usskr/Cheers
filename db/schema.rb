@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_20_043637) do
+ActiveRecord::Schema.define(version: 2021_11_02_063132) do
 
   create_table "chats", force: :cascade do |t|
     t.integer "room_id", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_10_20_043637) do
     t.integer "category", null: false
     t.datetime "start_time", null: false
     t.integer "spot_id"
+    t.decimal "score", precision: 5, scale: 3
     t.index ["spot_id"], name: "index_posts_on_spot_id"
   end
 

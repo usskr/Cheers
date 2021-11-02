@@ -24,6 +24,7 @@
           <div><%= render "posts/category", post: @post %></div>
       	  <div class="cheer_btn"><%= render "cheers/cheer_btn", post: @post %></div>
           <div class="comments_count"><%= render "post_comments/comment_btn", post: @post %></div>
+          <div><%= render "posts/score", post: @post %><%= @post.score %></div>
           <div>
             <% if @post.user == current_user %>
               <%= link_to post_path(@post), method: :delete, data: {confirm: "投稿を削除しますか？"} do %>
