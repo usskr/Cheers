@@ -13,8 +13,10 @@ class User < ApplicationRecord
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms, dependent: :destroy
 
-  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship",
+                                      foreign_key: "followed_id", dependent: :destroy
+  has_many :relationships, class_name: "Relationship",
+                           foreign_key: "follower_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :followings, through: :relationships, source: :followed
 
@@ -30,7 +32,11 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  before_save { email.downcase! }
   validates :name, uniqueness: true, length: { minimum: 2, maximum: 10 }
   validates :introduction, length: { maximum: 100 }
-  validates :email, presence: true, uniqueness: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
 end

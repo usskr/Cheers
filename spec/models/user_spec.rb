@@ -47,9 +47,36 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         user.email = ''
         is_expected.to eq false
       end
+      it '255文字以下であること: 255文字は〇' do
+        user.email = "a" * 243 + "@example.com"
+        is_expected.to eq true
+      end
+      it '255文字以下であること: 256文字は×' do
+        user.email = "a" * 244 + "@example.com"
+        is_expected.to eq false
+      end
       it '一意性があること' do
         user.email = other_user.email
         is_expected.to eq false
+      end
+      it "小文字化されていること" do
+        user.email = "HOGE@example.com"
+        user.save
+        expect(user[:email]).to eq("hoge@example.com")
+      end
+      it "フォーマットの検証（有効な場合）" do
+        emails = %w(user@example.com USER@foo.COM A_US-ER@foo.bar.org first.last@foo.jp alice+bob@baz.cn)
+        emails.each do |email|
+          user.email = email
+          is_expected.to eq true
+        end
+      end
+      it "フォーマットの検証（有効でない場合）" do
+        emails = %w(user@example,com user_at_foo.org user.name@example. foo@bar_baz.com foo@bar+baz.com)
+        emails.each do |email|
+          user.email = email
+          is_expected.to eq false
+        end
       end
     end
 
