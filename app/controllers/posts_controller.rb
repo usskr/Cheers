@@ -9,18 +9,22 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.start_time = Date.current
-    if spot_params[:address].present? # addressが入力されている場合
-      @spot = Spot.find_or_create_by(address: spot_params[:address]) # 同じaddressがすでにあればfind,なければcreateをする
-      @post.spot = @spot # @post.update(spot_id: @spot.id)と同じ。spot_idをpostに入れ込む
-    else
-      @spot = Spot.new
+    ActiveRecord::Base.transaction do
+      if spot_params[:address].present? # addressが入力されている場合
+        @spot = Spot.find_or_create_by(address: spot_params[:address]) # 同じaddressがすでにあればfind,なければcreateをする
+        @post.spot = @spot # @post.update(spot_id: @spot.id)と同じ。spot_idをpostに入れ込む
+      else
+        @spot = Spot.new
+      end
+      @post.score = Language.get_data(post_params[:content])
+      if @post.save!
+        redirect_to post_path(@post), notice: "投稿しました"
+      else
+        render :new
+      end
     end
-    @post.score = Language.get_data(post_params[:content])
-    if @post.save
-      redirect_to post_path(@post), notice: "投稿しました"
-    else
-      render :new
-    end
+  rescue
+    render :new
   end
 
   def index
